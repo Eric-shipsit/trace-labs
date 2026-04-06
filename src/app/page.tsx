@@ -1,57 +1,52 @@
-import React from "react";
+import { Footer } from "./components/Footer";
+import { HeroSection } from "./components/HeroSection";
+import Navbar from "./components/Navbar";
+import { Section2 } from "./components/Section2";
+import { Section3 } from "./components/Section3";
+import { Section4 } from "./components/Section4";
 
 export default function HomePage() {
   return (
-    <section className="space-y-6">
-      <div className="space-y-3">
-        <h1 className="text-4xl font-bold tracking-tight">
-          Find your next opportunity
-        </h1>
-        <p className="max-w-2xl text-gray-600">
-          Trace Labs is a simple job board project built with Next.js, Prisma,
-          and Neon. Browse open roles and explore the platform.
-        </p>
-      </div>
-
-      <div className="flex gap-4">
-        <a
-          href="/jobs"
-          className="rounded-md bg-black px-5 py-3 text-white transition hover:opacity-90"
-        >
-          View Jobs
-        </a>
-        <a
-          href="https://github.com/"
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-md border px-5 py-3 transition hover:bg-gray-50"
-        >
-          GitHub
-        </a>
-      </div>
-
-      <div className="grid gap-4 pt-6 md:grid-cols-3">
-        <div className="rounded-lg border p-5">
-          <h2 className="font-semibold">Real Database</h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Jobs are stored in Neon and accessed with Prisma.
-          </p>
-        </div>
-
-        <div className="rounded-lg border p-5">
-          <h2 className="font-semibold">Simple UI</h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Clean and readable layout for browsing listings.
-          </p>
-        </div>
-
-        <div className="rounded-lg border p-5">
-          <h2 className="font-semibold">Built with Next.js</h2>
-          <p className="mt-2 text-sm text-gray-600">
-            App Router structure with room for admin and public pages.
-          </p>
-        </div>
-      </div>
-    </section>
+    <main>
+      <Navbar />
+      {/* TODO - Fix the gradient background and make it more visually appealing */}
+      <section
+        className=" text-slate-900"
+        id = "hero"
+        style={{
+          background:"linear-gradient(to bottom, #020617 0%, #080c26 20%, #13183b 33%, #2a315e 48%, #3445bf 57%, #2384c4 65%, #f7f9fa 80%)"
+        }}
+      >
+        <HeroSection />
+      </section>
+      <section className="text-slate-900"
+        id = "section2"
+        style={{
+          background:"#f7f9fa"
+        }}>
+          <Section2 />
+      </section>
+      <section className="text-slate-900"
+        id = "section3"
+        style={{
+          background:"#101012"
+        }}>
+          <Section3 />
+      </section>
+      <section className="text-slate-900"
+        id = "section4"
+        style={{
+          background:"#f7f9fa"
+        }}>
+          <Section4 />
+      </section>
+      <section className="text-slate-900"
+        id = "section5"
+        style={{
+          background:"#101012"
+        }}>
+          <Footer/>
+      </section>
+    </main>
   );
 }
