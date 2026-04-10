@@ -1,8 +1,17 @@
+import { prisma } from "../../lib/prisma";
 import { Footer } from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Postings } from "./components/Postings";
 
-export default function CareerPage() {
+export default async function CareerPage() {
+  const jobs = await prisma.job.findMany({
+    where: {
+      open: true,
+    },
+    orderBy: {
+      title: "asc",
+    },
+  });
 
   return (
     <main 
@@ -17,7 +26,7 @@ export default function CareerPage() {
         style={{
           background:"#f7f9fa"
         }}>
-          <Postings />
+          <Postings jobs = {jobs} />
       </section>
       <section className="text-slate-900"
         style={{
