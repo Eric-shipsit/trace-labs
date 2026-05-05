@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
+  const [activeSection, setActiveSection] = useState("");
 
 
 useEffect(() => {
@@ -16,7 +16,7 @@ useEffect(() => {
   const navOffset = 80; // height of navbar
 
   const handleScroll = () => {
-    let currentSection = sections[0]?.id ?? "hero";
+    let currentSection = sections[0]?.id ?? "none";
 
     for (const section of sections) {
       const rect = section.getBoundingClientRect();
@@ -27,7 +27,7 @@ useEffect(() => {
         break;
       }
     }
-
+    console.log("Current section:", currentSection);
     setActiveSection(currentSection);
   };
 
@@ -47,7 +47,7 @@ useEffect(() => {
       : activeSection === "section4"
       ? "fixed bg-white/10 backdrop-blur-md text-black"
       : activeSection === "career"
-      ? "text-black bg-t"
+      ? "text-black bg-transparent"
       : "text-slate-900";
 
   const linkClass = (href: string) => {

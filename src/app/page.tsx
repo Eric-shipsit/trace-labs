@@ -1,3 +1,4 @@
+import FeaturePillMarquee from "./components/FeaturePillMarquee";
 import { Footer } from "./components/Footer";
 import { HeroSection } from "./components/HeroSection";
 import Navbar from "./components/Navbar";
@@ -14,11 +15,12 @@ export default function HomePage() {
         className=" text-slate-900"
         id = "hero"
         style={{
-          background:"linear-gradient(to bottom, #020617 0%, #080c26 20%, #13183b 33%, #2a315e 48%, #3445bf 57%, #2384c4 65%, #f7f9fa 80%)"
+          background:"linear-gradient(to bottom, #020617 0%, #080c26 20%, #13183b 33%, #292f5e 48%, #454c87 57%, #7b84c9 65%, #f7f9fa 80%)"
         }}
       >
         <HeroSection />
       </section>
+      <FeaturePillMarquee />
       <section className="text-slate-900"
         id = "section2"
         style={{

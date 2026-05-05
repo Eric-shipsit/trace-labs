@@ -19,7 +19,6 @@ export default async function CareerDetailPage({
   const job = await prisma.job.findFirst({
     where: {
       id: uid,
-      open: true,
     },
   });
 
@@ -61,11 +60,11 @@ function JobPostingDetail({ job }: JobPostingDetailProps) {
           background:"#f7f9fa"
         }}>
           <div className="mx-auto max-w-4xl px-6 py-12">
-          {!job.open && (
-            <div className="mb-8 border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold tracking-wide text-red-700">
-              This position is no longer open.
-            </div>
-          )}  
+            {!job.open && (
+              <div className="mb-8 border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold tracking-wide text-red-700">
+                This position is no longer open.
+              </div>
+            )}  
             <h1 className="text-3xl font-semibold text-slate-900">{job.title}</h1>
 
             <p className="mt-2 text-sm text-slate-500">

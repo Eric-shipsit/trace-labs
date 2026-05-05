@@ -1,20 +1,23 @@
-import { Footer } from "../components/Footer";
-import Navbar from "../components/Navbar";
+"use client";
+
+import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
-
   return (
-    <main>
-      <Navbar />
-      {/* TODO - Fix the gradient background and make it more visually appealing */}
+    <main className="flex min-h-screen items-center justify-center bg-[#f7f9fa] px-6">
+      <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+        <h1 className="text-2xl font-semibold text-slate-900">Sign in</h1>
+        <p className="mt-2 text-sm text-slate-600">
+          Continue with your Google account
+        </p>
 
-      <section className="text-slate-900"
-        id = "section5"
-        style={{
-          background:"#101012"
-        }}>
-          <Footer/>
-      </section>
+        <button
+          onClick={() => signIn("google", { callbackUrl: "/" })}
+          className="mt-6 w-full rounded-xl bg-slate-900 px-4 py-3 text-sm font-medium text-white hover:bg-slate-800"
+        >
+          Continue with Google
+        </button>
+      </div>
     </main>
   );
 }

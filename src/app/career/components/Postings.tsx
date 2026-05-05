@@ -167,7 +167,7 @@ export function Postings({ jobs }: PostingsProps) {
               </p>
             </div>
 
-            <div className="mt-4 space-y-4">
+            <div className="">
               {paginatedJobs.length > 0 ? (
                 paginatedJobs.map((job) => (
                   <div

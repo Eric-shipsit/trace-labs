@@ -1,3 +1,4 @@
+import Image from "next/image";
 export function Section3() {
   return (
     <section id="section3" className="px-6 py-20 md:px-10 lg:px-16 text-white">
@@ -29,11 +30,14 @@ export function Section3() {
                 team can move from detection to understanding faster.
               </p>
             </div>
-
             <div className="order-2 lg:order-2 lg:col-span-3">
-              <div className="aspect-6/3 w-full rounded-3xl bg-white shadow-sm ring-1 ring-slate-200">
-                <div className="flex h-full items-center justify-center rounded-3xl bg-slate-100 text-sm text-slate-400">
-                </div>
+              <div className="relative h-[280px] w-full overflow-hidden rounded-3xl bg-white md:h-[360px]">
+                <Image
+                  src="/image1.png"
+                  alt="Analytics report preview"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -41,12 +45,15 @@ export function Section3() {
           {/* Row 2: image left, text right */}
           <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-4 mt-20">
             <div className="order-2 lg:order-1 lg:col-span-2">
-              <div className="aspect-5/3 w-full rounded-3xl bg-white shadow-sm ring-1 ring-slate-200">
-                <div className="flex h-full items-center justify-center rounded-3xl bg-slate-100 text-sm text-slate-400">
-                </div>
+              <div className="relative h-[280px] w-full overflow-hidden rounded-3xl bg-white md:h-[360px]">
+                <Image
+                  src="/image9.png"
+                  alt="Analytics report preview"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
-
             <div className="order-1 lg:order-2 lg:col-span-2">
               <h3 className="mt-3 text-2xl font-semibold">
                 Understand what changed
@@ -57,28 +64,6 @@ export function Section3() {
               </p>
             </div>
           </div>
-
-          {/* Row 3: text left, image right */}
-
-          <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-5 mt-20">
-            <div className="order-1 lg:order-2 lg:col-span-2">
-              <h3 className="mt-3 text-2xl font-semibold">
-                Understand what changed
-              </h3>
-              <p className="mt-4 text-sm leading-7">
-                View trends clearly and investigate changes with context so your
-                team can move from detection to understanding faster.
-              </p>
-            </div>
-
-            <div className="order-2 lg:order-2 lg:col-span-3">
-              <div className="aspect-6/3 w-full rounded-3xl bg-white shadow-sm ring-1 ring-slate-200">
-                <div className="flex h-full items-center justify-center rounded-3xl bg-slate-100 text-sm text-slate-400">
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
