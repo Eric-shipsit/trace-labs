@@ -21,14 +21,8 @@ export function Footer() {
               <Link href="/features" className="transition hover:text-white">
                 Features
               </Link>
-              <Link href="/pricing" className="transition hover:text-white">
-                Pricing
-              </Link>
               <Link href="/demo" className="transition hover:text-white">
                 Request Demo
-              </Link>
-              <Link href="/login" className="transition hover:text-white">
-                Log In
               </Link>
             </div>
           </div>
@@ -38,9 +32,6 @@ export function Footer() {
               Company
             </h4>
             <div className="mt-4 flex flex-col space-y-3 text-sm text-slate-400">
-              <Link href="/about" className="transition hover:text-white">
-                About
-              </Link>
               <Link href="/career" className="transition hover:text-white">
                 Careers
               </Link>
@@ -64,9 +55,6 @@ export function Footer() {
               <Link href="/updates" className="transition hover:text-white">
                 Product Updates
               </Link>
-              <Link href="/docs" className="transition hover:text-white">
-                Documentation
-              </Link>
               <Link href="/support" className="transition hover:text-white">
                 Support
               </Link>
@@ -77,7 +65,7 @@ export function Footer() {
         <div className="mt-12 border-t border-white/10 pt-6">
           <div className="flex flex-col gap-4 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
             <p>© 2026 Trace Labs. All rights reserved.</p>
-            <div className="flex gap-6">
+            {/* <div className="flex gap-6">
               <Link href="/privacy" className="transition hover:text-white">
                 Privacy
               </Link>
@@ -87,7 +75,7 @@ export function Footer() {
               <Link href="/security" className="transition hover:text-white">
                 Security
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

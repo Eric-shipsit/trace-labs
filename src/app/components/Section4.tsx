@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AudienceSection } from "./AudienceSection"
 export function Section4() {
   return (
@@ -20,9 +21,11 @@ export function Section4() {
             </p>
 
             <div className="mt-8 flex justify-center">
-              <button className="rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-100">
-                Request a Demo
-              </button>
+              <Link href="/demo">
+                <button className="rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-100 hover:text-slate-900">
+                  Request a Demo
+                </button>
+              </Link>
             </div>
           </div>
         </div>

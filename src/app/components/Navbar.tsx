@@ -63,22 +63,22 @@ export default function Navbar({
       ? "absolute left-0 top-0 z-50 w-full bg-transparent text-white"
       : "text-slate-900";
 
-    const linkClass = (href: string) => {
-      const activeText = "text-current";
-      const inactiveText = "text-current opacity-80 hover:opacity-100";
-      if (pathname === "/") {
-        return `relative px-1 py-2 text-sm font-medium ${inactiveText}`;
-      }
+  const linkClass = (href: string) => {
+    const activeText = "text-current";
+    const inactiveText = "text-current opacity-80 hover:opacity-100";
+    if (pathname === "/") {
+      return `relative px-1 py-2 text-sm font-medium ${inactiveText}`;
+    }
 
-      const isActive =
-        pathname === href || (href !== "/" && pathname.startsWith(href));
+    const isActive =
+      pathname === href || (href !== "/" && pathname.startsWith(href));
 
-      return isActive
-        ? `relative px-1 py-2 text-sm font-semibold ${activeText} after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:rounded-full ${
-            isDark ? "after:bg-white" : "after:bg-slate-900"
-          }`
-        : `relative px-1 py-2 text-sm font-medium ${inactiveText} transition`;
-    };
+    return isActive
+      ? `relative px-1 py-2 text-sm font-semibold ${activeText} after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:rounded-full ${
+          isDark ? "after:bg-white" : "after:bg-slate-900"
+        }`
+      : `relative px-1 py-2 text-sm font-medium ${inactiveText} transition`;
+  };
   return (
     <nav className={`left-0 top-0 z-50 w-full ${navbarClass} ${className}`}>
       <div className="w-full px-4 sm:px-6 lg:px-8">
@@ -112,7 +112,7 @@ export default function Navbar({
               <Link href="/who-we-are" className={linkClass("/who-we-are")} onClick={() => setMenuOpen(false)}>
                 Who We Are
               </Link>
-              <Link href="/what-we-do" className={linkClass("/what-we-do")} onClick={() => setMenuOpen(false)}>
+              <Link href="/features" className={linkClass("/features")} onClick={() => setMenuOpen(false)}>
                 What We Do
               </Link>
               <Link href="/contact-us" className={linkClass("/contact-us")} onClick={() => setMenuOpen(false)}>
@@ -167,7 +167,7 @@ export default function Navbar({
             <Link href="/who-we-are" className={`${linkClass("/who-we-are")} flex-1 text-center whitespace-nowrap`}>
               Who We Are
             </Link>
-            <Link href="/what-we-do" className={`${linkClass("/what-we-do")} flex-1 text-center whitespace-nowrap`}>
+            <Link href="/features" className={`${linkClass("/features")} flex-1 text-center whitespace-nowrap`}>
               What We Do
             </Link>
             <Link href="/contact-us" className={`${linkClass("/contact-us")} flex-1 text-center whitespace-nowrap`}>
