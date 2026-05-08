@@ -15,7 +15,7 @@ export default async function CareerPage() {
 
   return (
     <main 
-      id="career"  
+      id="career"
       style={{
         background:"#f7f9fa"
       }}>

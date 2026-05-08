@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Inter, Manrope } from "next/font/google";
+import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 const manrope = Manrope({ subsets: ["latin"] });  
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.className} bg-slate-50`}>
-        <main>{children}</main>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
