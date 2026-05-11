@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function HeroSection() {
   return (
     <section className="w-full px-6 py-25 md:px-10 lg:px-16">
@@ -14,12 +16,16 @@ export function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <button className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/15">
+            <Link
+              href="/demo"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/15"
+            >
               Explore Product
+
               <span className="transition-transform duration-200 group-hover:translate-x-1">
                 →
               </span>
-            </button>
+            </Link>
           </div>
         </div>
         {/* Right container */}
