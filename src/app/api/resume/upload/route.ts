@@ -52,15 +52,12 @@ export async function POST(request: Request) {
       addRandomSuffix: false,
       contentType: "application/pdf",
     });
-
     return NextResponse.json({
-      success: true,
-      pathname: blob.pathname,
       url: blob.url,
       downloadUrl: blob.downloadUrl ?? null,
-      size: blob.size,
-      contentType: blob.contentType,
-      uploadedAt: blob.uploadedAt,
+      size: file.size,
+      contentType: file.type,
+      uploadedAt: new Date().toISOString(),
     });
   } catch (error) {
     console.error("Resume upload failed:", error);
