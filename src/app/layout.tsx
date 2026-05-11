@@ -8,8 +8,13 @@ import Navbar from "./components/Navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Monitr - AI-Powered Anomaly Detection for Web Applications",
-  description: "Your description here",
+  title: "Trace Labs - Creating Software for SaaS companies",
+  description: "Trace Labs",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
