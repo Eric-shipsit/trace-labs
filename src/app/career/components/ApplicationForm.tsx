@@ -37,6 +37,7 @@ export function ApplicationForm({ jobId }: ApplicationFormProps) {
       });
 
       const uploadResult = await uploadResponse.json();
+      console.log("Upload result:", uploadResult);
 
       if (!uploadResponse.ok) {
         throw new Error(uploadResult.error || "Resume upload failed.");
@@ -146,28 +147,28 @@ export function ApplicationForm({ jobId }: ApplicationFormProps) {
           className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-slate-500"
         />
       </div>
-<div>
-  <label className="mb-2 block text-sm font-medium text-slate-700">
-    Resume
-  </label>
+      <div>
+        <label className="mb-2 block text-sm font-medium text-slate-700">
+          Resume
+        </label>
 
-  <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 transition hover:border-slate-400 hover:bg-slate-100">
-    <input
-      type="file"
-      name="resume"
-      accept="application/pdf,.pdf"
-      required
-      className="block w-full cursor-pointer text-sm text-slate-600
-                 file:mr-4 file:rounded-full file:border file:border-slate-300
-                 file:bg-white file:px-4 file:py-2
-                 file:text-sm file:font-medium file:text-slate-700
-                 hover:file:bg-slate-100"
-    />
-    <p className="mt-3 text-xs text-slate-500">
-      Upload your resume as a PDF. Maximum file size: 4 MB.
-    </p>
-  </div>
-</div>
+        <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 transition hover:border-slate-400 hover:bg-slate-100">
+          <input
+            type="file"
+            name="resume"
+            accept="application/pdf,.pdf"
+            required
+            className="block w-full cursor-pointer text-sm text-slate-600
+                      file:mr-4 file:rounded-full file:border file:border-slate-300
+                      file:bg-white file:px-4 file:py-2
+                      file:text-sm file:font-medium file:text-slate-700
+                      hover:file:bg-slate-100"
+          />
+          <p className="mt-3 text-xs text-slate-500">
+            Upload your resume as a PDF. Maximum file size: 4 MB.
+          </p>
+        </div>
+      </div>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
       {success ? <p className="text-sm text-green-600">{success}</p> : null}
 

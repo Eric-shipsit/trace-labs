@@ -54,6 +54,7 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({
       url: blob.url,
+      pathname,
       downloadUrl: blob.downloadUrl ?? null,
       size: file.size,
       contentType: file.type,

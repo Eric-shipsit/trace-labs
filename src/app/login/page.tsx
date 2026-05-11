@@ -14,23 +14,31 @@ export default function LoginPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
+    const normalizedEmail = email.trim().toLowerCase();
+
     if (isSignUp) {
       const res = await fetch("/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({
+          name: name.trim(),
+          email: normalizedEmail,
+          password,
+        }),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        alert("Could not create account");
+        alert(data.error || "Could not create account");
         return;
       }
     }
 
     const result = await signIn("credentials", {
-      email,
+      email: normalizedEmail,
       password,
       redirect: false,
     });

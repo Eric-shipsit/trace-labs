@@ -18,9 +18,24 @@ export async function POST(request: Request) {
       resumePathname,
     } = body;
 
-    if (!jobId || !firstName || !lastName || !email || !resumeUrl || !resumePathname) {
+    const requiredFields = {
+      jobId,
+      firstName,
+      lastName,
+      email,
+      resumeUrl,
+      resumePathname,
+    };
+    const missingFields = Object.entries(requiredFields)
+      .filter(([_, value]) => !value)
+      .map(([key]) => key);
+
+    if (missingFields.length > 0) {
       return NextResponse.json(
-        { error: "Missing required fields." },
+        {
+          error: "Missing required fields.",
+          missingFields,
+        },
         { status: 400 }
       );
     }
