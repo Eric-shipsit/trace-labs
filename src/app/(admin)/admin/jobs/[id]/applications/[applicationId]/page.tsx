@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/src/lib/prisma";
 import { ApplicationStatusSelect } from "./ApplicationStatusSelect";
+import { RefreshCw } from "lucide-react";
+import ResumeParserStatus from "./ResumeParserStatus";
 
 type ApplicationDetailPageProps = {
   params: Promise<{
@@ -26,7 +28,6 @@ export default async function ApplicationDetailPage({
       job: true,
     },
   });
-
 
   if (!application) {
     notFound();
@@ -158,6 +159,28 @@ export default async function ApplicationDetailPage({
                   <p className="mt-1 text-sm text-slate-900">—</p>
                 )}
               </div>
+            </div>
+            <div className = "pt-3">
+              <ResumeParserStatus
+                status={application.resumeParserStatus}
+                applicationId={application.id}
+                resumeScore={application.resumeScore ?? undefined}
+                resumeStrengths={
+                  Array.isArray(application.aiResumeStrengths)
+                    ? application.aiResumeStrengths.map(String)
+                    : undefined
+                }
+                resumeGaps={
+                  Array.isArray(application.aiResumeGaps)
+                    ? application.aiResumeGaps.map(String)
+                    : undefined
+                }
+                resumeExplanation={
+                  typeof application.aiResumeExplanation === "string"
+                    ? application.aiResumeExplanation
+                    : undefined
+                }
+              />
             </div>
           </div>
 

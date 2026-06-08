@@ -82,7 +82,7 @@ export async function POST(request: Request) {
       },
     });
 
-    return NextResponse.json({ success: true, application });
+    return NextResponse.json({ success: true, application, id: application.id });
   } catch (error) {
     console.error("Application creation failed:", error);
     return NextResponse.json(

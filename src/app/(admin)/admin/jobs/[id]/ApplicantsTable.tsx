@@ -16,6 +16,7 @@ type ApplicantsTableProps = {
       linkedinUrl: string | null;
       portfolioUrl: string | null;
     };
+    resumeScore: number;
   }[];
 };
 
@@ -57,6 +58,8 @@ export function ApplicantsTable({ applications, jobId }: ApplicantsTableProps) {
             <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Phone</th>
             <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Status</th>
             <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Applied</th>
+            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Score</th>
+
             <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Resume</th>
           </tr>
         </thead>
@@ -91,6 +94,9 @@ export function ApplicantsTable({ applications, jobId }: ApplicantsTableProps) {
               </td>
               <td className="px-4 py-4 text-sm text-slate-700">
                 {new Date(application.submittedAt).toLocaleDateString()}
+              </td>
+              <td className="px-4 py-4 text-sm text-slate-700">
+                {application.resumeScore ?? "N/A"}
               </td>
               <td className="px-4 py-4 text-sm">
                 <a

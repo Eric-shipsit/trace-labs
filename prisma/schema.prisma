@@ -94,11 +94,33 @@ model Application {
   resumePathname  String
   coverLetter     String?
   submittedAt     DateTime  @default(now())
+
   applicant       Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
   job             Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
   status          ApplicationStatus @default(PENDING)
 
+  // Regular keyword parser result
+  resumeScore Int?
+  resumeMatchedKeywords Json?
+  resumeMissingKeywords Json?
+  resumeParserStatus ResumeParserStatus @default(NOT_RUN)
+
+  // AI parser result
+  aiResumeScore           Int?
+  aiResumeStrengths       Json?
+  aiResumeGaps            Json?
+  aiResumeExplanation     String?
+  aiResumeParserStatus    ResumeParserStatus @default(NOT_RUN)
+
+
   @@unique([jobId, applicantId])
+}
+
+enum ResumeParserStatus {
+  NOT_RUN
+  PROCESSING
+  SCORED
+  FAILED
 }
 
 enum ExperienceLevel {

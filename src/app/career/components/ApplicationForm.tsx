@@ -66,7 +66,16 @@ export function ApplicationForm({ jobId }: ApplicationFormProps) {
       if (!applicationResponse.ok) {
         throw new Error(applicationResult.error || "Application submission failed.");
       }
+      const parseResponse = await fetch(
+        `/api/admin/applications/${applicationResult.id}/parse-resume`,
+        {
+          method: "POST",
+        }
+      );
 
+      if (!parseResponse.ok) {
+        console.error("Resume parsing failed.");
+      }
       setSuccess("Your application was submitted successfully.");
       form.reset();
     } catch (err) {
