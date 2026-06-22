@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/src/lib/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/src/auth";
 
 const allowedStatuses = [
   "PENDING",
@@ -13,6 +15,12 @@ export async function PATCH(
   req: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.admin) {
+    return new NextResponse("Unauthorized", { status: 401 });
+  }
+
   const { id } = await context.params;
   const body = await req.json();
 

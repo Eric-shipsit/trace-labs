@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import pdf from "pdf-parse/lib/pdf-parse";
 import mammoth from "mammoth";
 import OpenAI from "openai";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/src/auth";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -30,6 +32,12 @@ function chunkText(text: string, chunkSize = 1200, overlap = 200) {
 }
 
 export async function POST(request: Request) {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.admin) {
+    return Response.json({ error: "Unauthorized" }, { status: 403 });
+  }
+
   const { documentIds } = await request.json();
 
   if (!Array.isArray(documentIds) || documentIds.length === 0) {

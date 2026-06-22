@@ -12,6 +12,9 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession(authOptions);
+  if (!session?.user?.admin) {
+    return Response.json({ error: "Unauthorized" }, { status: 403 });
+  }
   const userKey =
     session?.user?.email ??
     request.headers.get("x-forwarded-for") ??

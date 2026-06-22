@@ -2,9 +2,17 @@
 import { NextResponse } from "next/server";
 import { del } from "@vercel/blob";
 import { prisma } from "@/src/lib/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/src/auth";
 
 export async function DELETE(request: Request) {
   try {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user?.admin) {
+      return Response.json({ error: "Unauthorized" }, { status: 403 });
+    }
+
     const body = await request.json();
     const documentIds = body.documentIds as string[];
 
