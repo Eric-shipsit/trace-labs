@@ -1,6 +1,7 @@
 import { prisma } from "@/src/lib/prisma";
 import { DocumentUploadButton } from "../components/DocumentUploadButton";
 import { DocumentsTable } from "./components/DocumentsTable";
+import Navbar from "@/src/app/components/Navbar";
 
 export default async function AdminDocumentsPage() {
   const documents = await prisma.document.findMany({
@@ -11,7 +12,8 @@ export default async function AdminDocumentsPage() {
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8">
-      <div className="mx-auto max-w-6xl">
+      <Navbar />
+      <div className="mt-5 mx-auto max-w-6xl">
         <div className="mb-8">
           <p className="text-sm font-medium text-slate-500">Admin</p>
           <h1 className="mt-1 text-3xl font-semibold text-slate-900">
