@@ -5,6 +5,7 @@ import mammoth from "mammoth";
 import OpenAI from "openai";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/auth";
+import { openAiRateLimit } from "@/src/lib/rate-limit";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -36,6 +37,24 @@ export async function POST(request: Request) {
 
   if (!session?.user?.admin) {
     return Response.json({ error: "Unauthorized" }, { status: 403 });
+  }
+
+  const userKey =
+    session?.user?.email ??
+    request.headers.get("x-forwarded-for") ??
+    "anonymous";
+  const { success, reset } = await openAiRateLimit.limit(
+    `openai:${userKey}`
+  );
+
+  if (!success) {
+    return NextResponse.json(
+      {
+        error: "Too many requests. Please try again later.",
+        reset,
+      },
+      { status: 429 }
+    );
   }
 
   const { documentIds } = await request.json();

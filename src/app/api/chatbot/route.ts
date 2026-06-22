@@ -1,10 +1,9 @@
+import { authOptions } from "@/src/auth";
 import { prisma } from "@/src/lib/prisma";
+import { openAiRateLimit } from "@/src/lib/rate-limit";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import { openai } from "@/src/lib/openai";
 
 function vectorToSql(vector: number[]) {
   return `[${vector.join(",")}]`;
@@ -25,6 +24,30 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { error: "Question is required" },
       { status: 400 }
+    );
+  }
+
+  if (question.length > 1000) {
+    return NextResponse.json(
+      { error: "Question is too long" },
+      { status: 400 }
+    );
+  }
+
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const ip = forwardedFor?.split(",")[0]?.trim();
+  const session = await getServerSession(authOptions);
+
+  const userKey = session?.user?.email ?? ip ?? "anonymous";
+
+  const { success, reset } = await openAiRateLimit.limit(
+    `chatbot:${userKey}`
+  );
+
+  if (!success) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later.", reset },
+      { status: 429 }
     );
   }
 
