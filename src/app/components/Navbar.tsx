@@ -24,7 +24,7 @@ export default function Navbar({
   useEffect(() => {
     
     const sections = Array.from(document.querySelectorAll("section[id]"));
-    const navOffset = 80; // height of navbar
+    const navOffset = 80;
 
     const handleScroll = () => {
       let currentSection = sections[0]?.id ?? "none";

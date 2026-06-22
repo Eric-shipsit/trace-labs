@@ -1,4 +1,3 @@
-// app/api/admin/applications/[id]/resume/route.ts
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { get } from "@vercel/blob";

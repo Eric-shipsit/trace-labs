@@ -1,5 +1,3 @@
-// src/app/api/admin/applications/[applicationId]/parse-resume/route.ts
-
 import { NextResponse } from "next/server";
 import { prisma } from "@/src/lib/prisma";
 import pdfParse from "pdf-parse/lib/pdf-parse";
@@ -54,7 +52,7 @@ export async function POST(
     }
     console.log(application);
 
-    // 1. Download resume from Blob
+    // Download resume from Blob
 
 
     if (!application.resumePathname) {
@@ -81,13 +79,13 @@ export async function POST(
     }
 
     const resumeBuffer = Buffer.concat(chunks);
-    // 2. Extract text from PDF
+    // Extract text from PDF
 
     const parsedPdf = await pdfParse(resumeBuffer);
     const resumeText = parsedPdf.text;
     console.log(resumeText.slice(0, 500));
 
-    // 3. Call OpenAI
+    // Call OpenAI
     const aiResponse = await openai.responses.create({
       model: "gpt-4.1-mini",
       input: `

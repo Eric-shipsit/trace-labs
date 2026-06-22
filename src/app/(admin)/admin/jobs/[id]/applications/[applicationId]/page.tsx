@@ -1,9 +1,6 @@
-// app/admin/jobs/[id]/applications/[applicationId]/page.tsx
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { prisma } from "@/src/lib/prisma";
 import { ApplicationStatusSelect } from "./ApplicationStatusSelect";
-import { RefreshCw } from "lucide-react";
 import ResumeParserStatus from "./ResumeParserStatus";
 
 type ApplicationDetailPageProps = {

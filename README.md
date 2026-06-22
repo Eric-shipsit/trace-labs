@@ -38,3 +38,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Making schema.prisma changes without reseting the DB
 npx prisma db push
 npx prisma generate
+
+testadmin@tracelabs.com
+test123

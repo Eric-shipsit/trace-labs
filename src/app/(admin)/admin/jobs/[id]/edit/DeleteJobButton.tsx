@@ -1,4 +1,3 @@
-// app/admin/jobs/[id]/DeleteJobButton.tsx
 "use client";
 
 type DeleteJobButtonProps = {

@@ -1,4 +1,3 @@
-// app/admin/jobs/[id]/page.tsx
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/auth";

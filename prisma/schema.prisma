@@ -57,19 +57,19 @@ model VerificationToken {
 }
 
 model Job {
-  id                String          @id @default(uuid())
-  title             String
-  description       String
-  requirements      String[]
-  responsibilities  String[]
-  preferences       String[]
-  type              JobType
-  experienceLevel   ExperienceLevel
-  role              Role
-  location          String
-  createdAt         DateTime        @default(now())
-  applications      Application[]
-  open              Boolean
+  id               String          @id @default(uuid())
+  title            String
+  description      String
+  requirements     String[]
+  responsibilities String[]
+  preferences      String[]
+  type             JobType
+  experienceLevel  ExperienceLevel
+  role             Role
+  location         String
+  createdAt        DateTime        @default(now())
+  applications     Application[]
+  open             Boolean
 }
 
 model Applicant {
@@ -87,33 +87,71 @@ model Applicant {
 }
 
 model Application {
-  id              String    @id @default(cuid())
-  jobId           String
-  applicantId     String
-  resumeUrl       String
-  resumePathname  String
-  coverLetter     String?
-  submittedAt     DateTime  @default(now())
+  id             String   @id @default(cuid())
+  jobId          String
+  applicantId    String
+  resumeUrl      String
+  resumePathname String
+  coverLetter    String?
+  submittedAt    DateTime @default(now())
 
-  applicant       Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-  job             Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  status          ApplicationStatus @default(PENDING)
+  applicant Applicant         @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  job       Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  status    ApplicationStatus @default(PENDING)
 
-  // Regular keyword parser result
-  resumeScore Int?
+  resumeScore           Int?
   resumeMatchedKeywords Json?
   resumeMissingKeywords Json?
-  resumeParserStatus ResumeParserStatus @default(NOT_RUN)
+  resumeParserStatus    ResumeParserStatus @default(NOT_RUN)
 
-  // AI parser result
-  aiResumeScore           Int?
-  aiResumeStrengths       Json?
-  aiResumeGaps            Json?
-  aiResumeExplanation     String?
-  aiResumeParserStatus    ResumeParserStatus @default(NOT_RUN)
-
+  aiResumeScore        Int?
+  aiResumeStrengths    Json?
+  aiResumeGaps         Json?
+  aiResumeExplanation  String?
+  aiResumeParserStatus ResumeParserStatus @default(NOT_RUN)
 
   @@unique([jobId, applicantId])
+}
+
+model Document {
+  id       String         @id @default(cuid())
+  name     String
+  fileType String
+  url      String
+  pathname String
+  status   DocumentStatus @default(UPLOADED)
+
+  chunkCount   Int       @default(0)
+  processedAt  DateTime?
+  errorMessage String?
+
+  chunks DocumentChunk[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DocumentChunk {
+  id String @id @default(cuid())
+
+  documentId String
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  chunkIndex Int
+  content    String
+
+  embedding Unsupported("vector(1536)")?
+
+  createdAt DateTime @default(now())
+
+  @@index([documentId])
+}
+
+enum DocumentStatus {
+  UPLOADED
+  PROCESSING
+  READY
+  FAILED
 }
 
 enum ResumeParserStatus {

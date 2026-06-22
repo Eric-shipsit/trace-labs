@@ -1,4 +1,3 @@
-import Adminbar from "./components/Adminbar";
 import FeaturePillMarquee from "./components/FeaturePillMarquee";
 import { Footer } from "./components/Footer";
 import { HeroSection } from "./components/HeroSection";
@@ -11,7 +10,6 @@ export default function HomePage() {
   return (
     <main>
       <Navbar />
-      {/* TODO - Fix the gradient background and make it more visually appealing */}
       <section
         id="hero"
         className="relative overflow-hidden text-slate-900"

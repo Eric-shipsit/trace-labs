@@ -65,17 +65,6 @@ export function Footer() {
         <div className="mt-12 border-t border-white/10 pt-6">
           <div className="flex flex-col gap-4 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
             <p>© 2026 Trace Labs. All rights reserved.</p>
-            {/* <div className="flex gap-6">
-              <Link href="/privacy" className="transition hover:text-white">
-                Privacy
-              </Link>
-              <Link href="/terms" className="transition hover:text-white">
-                Terms
-              </Link>
-              <Link href="/security" className="transition hover:text-white">
-                Security
-              </Link>
-            </div> */}
           </div>
         </div>
       </div>

@@ -1,8 +1,7 @@
-// app/api/resume/upload/route.ts
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 
-const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4 MB
+const MAX_FILE_SIZE = 4 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(["application/pdf"]);
 
 function sanitizeFileName(fileName: string) {

@@ -1,11 +1,10 @@
 import "./globals.css";
-import { Inter, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import Providers from "./providers";
 
-const inter = Inter({ subsets: ["latin"] });
 const manrope = Manrope({ subsets: ["latin"] });  
-import Navbar from "./components/Navbar";
 import type { Metadata } from "next";
+import { ChatbotWidget } from "./components/ChatbotWidget";
 
 export const metadata: Metadata = {
   title: "Trace Labs - Creating Software for SaaS companies",
@@ -25,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.className} bg-slate-50`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <ChatbotWidget/>
+        </Providers>
       </body>
     </html>
   );

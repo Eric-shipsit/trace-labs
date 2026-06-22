@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-// app/admin/jobs/[id]/ApplicantsTable.tsx
 type ApplicantsTableProps = {
   jobId: string;
   applications: {
