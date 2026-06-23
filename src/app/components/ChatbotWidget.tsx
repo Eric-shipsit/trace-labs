@@ -58,7 +58,7 @@ export function ChatbotWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {isOpen && (
-        <div className="mb-4 flex h-[520px] w-[360px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+        <div className="mb-4 flex h-[520px] w-[360px] flex-col overflow-hidden rounded-2xl  bg-white shadow-2xl">
           <div className="flex items-center justify-between border-b border-slate-200 bg-slate-900 px-4 py-3 text-white">
             <div>
               <h2 className="text-sm font-semibold">Trace Labs Assistant</h2>
